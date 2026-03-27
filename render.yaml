@@ -1,22 +1,22 @@
 services:
-  - type: worker
+  - type: web
     name: claude-trading-bot
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python main.py
+    startCommand: python server.py
     envVars:
       - key: OANDA_API_KEY
-        sync: false          # Set this in Render dashboard
+        sync: false
       - key: OANDA_ACCOUNT_ID
-        sync: false          # Set this in Render dashboard
+        sync: false
       - key: ANTHROPIC_API_KEY
-        sync: false          # Set this in Render dashboard
+        sync: false
       - key: OANDA_ENV
-        value: "practice"    # Change to "live" only for real money
+        value: "practice"
       - key: STARTING_BALANCE
         value: "5000"
       - key: PROFIT_TARGET
-        value: "500"         # Bot halts when account reaches $5,500
+        value: "500"
       - key: MAX_TOTAL_DRAWDOWN
         value: "500"
       - key: MAX_DAILY_LOSS
@@ -24,6 +24,6 @@ services:
       - key: RISK_PER_TRADE_PCT
         value: "1.0"
       - key: CHECK_INTERVAL_SECONDS
-        value: "900"         # 15 minutes
+        value: "900"
       - key: CLAUDE_MODEL
         value: "claude-sonnet-4-20250514"
